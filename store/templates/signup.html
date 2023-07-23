@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<div class="container mt-4">
+    
+    <div class="p-3 m-3">
+
+        
+        <div class="col-lg-5 rounded mx-auto border pt-4">
+            <div class="text-center col">
+            
+                <img
+                src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.fACGQEJwM6VhSCWAi32LBwHaEK%26pid%3DApi&f=1&ipt=9c216a24e59d8794bc67509a911488114f8fef81f8b904725a6aeddf3538991b&ipo=images" alt="Foto de juguetes"
+                class="" style="height: 150px;">
+            <!-- <hr> -->
+            <hr>
+            </div>
+            <h3 class="alert alert-success rounded-pill" style="text-align:center">Crear cuenta de usuario</h3>
+            <form action="/signup" method="POST">
+                
+                {% csrf_token %}
+
+                {% if error%}
+                <div class="alert alert-danger" role="alert">
+                    {{error}}
+                </div>
+                {% endif %}
+                <!-- Nombre -->
+                <div class="form-group">
+                    <label for="">Nombre</label>
+                    <input type="text" name="firstname"
+                     id="" value="{{values.first_name}}" class="form-control form-control-sm" 
+                     placeholder="">
+                </div>
+
+                <!-- Apellido -->
+                <div class="form-group">
+                    <label for="">Apellido</label>
+                    <input type="text" name="lastname" 
+                    id="" value="{{values.last_name}}" class="form-control form-control-sm"
+                    >
+                </div>
+
+                <!-- Número de teléfono -->
+                <div class="form-group">
+                    <label for="">Teléfono</label>
+                    <input type="text" name="phone" 
+                    id="" class="form-control form-control-sm"
+                    value="{{values.phone}}"
+                    placeholder="6054-2340"
+                    >
+                </div>
+                <!-- email -->
+                <div class="form-group">
+                    <label for="">Email</label>
+                    <input required type="email" name="email" id=""
+                    value="{{values.email}}" 
+                    class=" form-control-sm form-control" placeholder="kalury@kalury.com">
+                </div>
+
+
+                <!-- Contraseña-->
+                <div class="form-group">
+                    <label for="">Contraseña</label>
+                    <input type="password" 
+                    name="password" 
+                    id=""
+                     class="form-control form-control-sm">
+                </div>
+
+                <!--Casilla (cuadrito) de completar la compra-->
+                <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <label class="form-check-label d-grid gap-2" for="exampleCheck1">Completar la compra</label>
+                </div>
+                <hr>
+                <button type="submit" class="btn btn-sm btn-success col-lg-12">Crear cuenta</button>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

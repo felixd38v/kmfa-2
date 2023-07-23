@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<div class="container">
+    <div class="p-3 m-3">
+        <div class="col-lg-5 rounded mx-auto border pt-4">
+            <div class="text-center col">
+            
+                <img
+                src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.IkDAE2HQnVr2WV5OEhdyuQHaHa%26pid%3DApi&f=1&ipt=a3d217f29efa2bc204492c69f309fb399a27e5739e3d1c39720c8055675178d7&ipo=images" alt=""
+                class="" style="height: 150px;">
+            <hr>
+            </div>
+            <h3 class="alert alert-light rounded-pill" style="text-align:center" >Ingresar - Login</h3>
+            <form action="/login" method="POST">
+                
+                {% csrf_token %}
+
+                {% if error%}
+                <div class="alert alert-danger" role="alert">
+                    {{error}}
+                </div>
+                {% endif %}
+                <!-- email -->
+                <div class="form-group">
+                    <label for="">Email</label>
+                    <input required type="email" name="email" id=""
+                    value="{{values.email}}" 
+                    class=" form-control-sm form-control" placeholder="kalury@kalury.com">
+                </div>
+
+
+                <!-- contraseña -->
+                <div class="form-group">
+                    <label for="">Contraseña</label>
+                    <input type="password" 
+                    name="password" 
+                    id=""
+                     class="form-control form-control-sm" >
+                </div>
+
+                <!--Botón para completar la compra-->
+            <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <label class="form-check-label d-grid gap-2" for="exampleCheck1">Completar la compra</label>
+                </div>
+                <hr>
+                <button type="submit" class="btn btn-sm btn-success col-lg-12">Ingresar</button>
+
+
+                
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
